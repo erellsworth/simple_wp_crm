@@ -13,6 +13,11 @@ if(!class_exists('WP_Simple_CRM_Form')){
 					'message_cols' => 5,
 				);
 
+		public static function scripts(){
+			//JavaScript
+			wp_enqueue_script('simplecrm', SIMPLECRM_URI . 'assets/simplecrm.js', array('jquery'), '1.0', true);			
+		}
+
 		public static function get_attributes($user_atts){
 			return shortcode_atts(self::$defaults, $user_atts, 'simple_crm_form' );
 		}
@@ -44,4 +49,5 @@ if(!class_exists('WP_Simple_CRM_Form')){
 	}
 
 	add_shortcode( 'simple_crm_form', array( 'WP_Simple_CRM_Form', 'shortcode' ) );	
+	add_action( 'wp_enqueue_scripts', array('WP_Simple_CRM_Form', 'scripts') );	
 }
