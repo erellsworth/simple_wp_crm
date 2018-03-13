@@ -1,5 +1,5 @@
 <?php
-if(!class_exists('WP_Simple_CRM')){
+if(!class_exists('WP_Simple_CRM_PostType')){
 	class WP_Simple_CRM_PostType{
 		private $post_type, $labels;
 		

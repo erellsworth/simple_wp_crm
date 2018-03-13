@@ -16,3 +16,4 @@ define('SIMPLECRM_PATH', dirname(__FILE__));
 
 require_once SIMPLECRM_PATH . '/post-type.php';
 require_once SIMPLECRM_PATH . '/admin.php';
+require_once SIMPLECRM_PATH . '/form.php';
