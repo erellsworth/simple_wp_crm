@@ -36,6 +36,10 @@ if(!class_exists('WP_Simple_CRM_PostType')){
 			);
 	    }
 
+	    public function get_post_type(){
+	    	return $this->post_type;
+	    }
+
 	    public function register(){
 
 			$args = array(
