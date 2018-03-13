@@ -69,7 +69,7 @@ if(!class_exists('WP_Simple_CRM_Form')){
 
 			foreach (self::$required_fields as $field) {
 				if(!$data[$field]){
-					$errors[] = array('missing' => $field);
+					$errors[] = 'Missing ' . $field . ' field';
 				}
 			}
 

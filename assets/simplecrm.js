@@ -25,14 +25,15 @@
 				outputElem.html('<p>Sent.</p>');
 			} else {
 				var errors = '<h3>Opps... something went wrong</h3>';
-				response.data.map((err, index)=>{
-					errors += '<p>' + err + '</p>';
-					return err;
+				
+				response.data.map((error, index)=>{
+					errors += '<p>' + error + '</p>';
+					return error;
 				});
+
 				outputElem.addClass('simple_cms_error').html(errors);
 				button.show();
 			}
-			
 		});		
 	});
 
