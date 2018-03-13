@@ -2,6 +2,8 @@
 if(!class_exists('WP_Simple_CRM_Form')){
 	class WP_Simple_CRM_Form{
 
+		private static $time_api_url = 'http://www.convert-unix-time.com/api?timestamp=now&timezone=';
+
 		private static $defaults = array(
 					'name_label' => 'Name',
 					'phone_label' => 'Phone Number',
@@ -22,8 +24,20 @@ if(!class_exists('WP_Simple_CRM_Form')){
 			return shortcode_atts(self::$defaults, $user_atts, 'simple_crm_form' );
 		}
 
+		public static function get_date_data(){
+			$timezone_string = get_option('timezone_string');
+			$timezone = explode('/', $timezone_string);
+			$url = self::$time_api_url . $timezone[1];
+
+			$response = wp_remote_get($url);
+			$date = json_decode($response['body']);
+			return $date;
+		}
+
 		public static function get_form($user_atts){
 			$atts = self::get_attributes($user_atts);
+
+			$date_data = self::get_date_data();
 
 			$form = '<form class="simple_crm_form">
 						<label>' . $atts['name_label'] . '</label>
@@ -37,6 +51,7 @@ if(!class_exists('WP_Simple_CRM_Form')){
 						<label>' . $atts['message_label'] . '</label>
 						<textarea rows=' . $atts['message_rows'] . ' cols=' . $atts['message_cols'] . ' name="message" /></textarea>
 						<hr/>
+						<input type="hidden" name="timestamp" value="'.  $date_data->timestamp . '"/>
 						<button type="submit">' . $atts['button_text'] . '</button>
 					</form>';
 
