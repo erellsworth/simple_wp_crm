@@ -8,6 +8,7 @@ if(!class_exists('WP_Simple_CRM_Form')){
 					'email_label' => 'Email Address',
 					'budget_label' => 'Desired Budget',
 					'message_label' => 'Message',
+					'button_text' => 'Send',
 					'message_rows' => 5,
 					'message_cols' => 5,
 				);
@@ -16,15 +17,29 @@ if(!class_exists('WP_Simple_CRM_Form')){
 			return shortcode_atts(self::$defaults, $user_atts, 'simple_crm_form' );
 		}
 
-		public static function form($user_atts){
+		public static function get_form($user_atts){
 			$atts = self::get_attributes($user_atts);
-			
-			return '<h3>' . $atts['name_label'] . '</h3>';
+
+			$form = '<form class="simple_crm_form">
+						<label>' . $atts['name_label'] . '</label>
+						<input required type="text" name="name" />
+						<label>' . $atts['phone_label'] . '</label>
+						<input type="text" name="phone" />
+						<label>' . $atts['email_label'] . '</label>
+						<input required type="email" name="email" />
+						<label>' . $atts['budget_label'] . '</label>
+						<input type="text" name="budget" />
+						<label>' . $atts['message_label'] . '</label>
+						<textarea rows=' . $atts['message_rows'] . ' cols=' . $atts['message_cols'] . ' name="message" /></textarea>
+						<hr/>
+						<button type="submit">' . $atts['button_text'] . '</button>
+					</form>';
+
+			return $form;
 		}
 
 		public static function shortcode($user_atts, $content=""){
-
-			return self::form($user_atts);
+			return self::get_form($user_atts);
 		}
 	}
 
