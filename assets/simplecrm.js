@@ -6,6 +6,7 @@
 		var url = $(this).attr('action');
 		var outputElem = $('.simple_crm_form_response', this);
 		var button = $('button', this);
+		var success_message = $(this).data('success_message');
 		
 		button.hide();
 		outputElem.html('<div class="simple_cms_spinner"></div>');
@@ -22,7 +23,7 @@
 		$.post(url, post_data, function(response) {
 			console.log('Got this from the server: ', response);
 			if(response.success){
-				outputElem.html('<p>Sent.</p>');
+				outputElem.html('<p>' + success_message + '</p>');
 			} else {
 				var errors = '<h3>Opps... something went wrong</h3>';
 				

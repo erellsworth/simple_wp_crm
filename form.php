@@ -13,6 +13,7 @@ if(!class_exists('WP_Simple_CRM_Form')){
 					'button_text' => 'Send',
 					'message_rows' => 5,
 					'message_cols' => 5,
+					'success_message' => 'Your Message Has Been Sent'
 				);
 
 		private static $required_fields = array('name', 'email', 'phone');
@@ -44,7 +45,7 @@ if(!class_exists('WP_Simple_CRM_Form')){
 
 			$date_data = self::get_date_data();
 
-			$form = '<form class="simple_crm_form" action="' . admin_url( 'admin-ajax.php' ) . '">
+			$form = '<form class="simple_crm_form" action="' . admin_url( 'admin-ajax.php' ) . '" data-success_message="' . $atts['success_message'] . '">
 						<label>' . $atts['name_label'] . '</label>
 						<input required type="text" name="name" />
 						<label>' . $atts['phone_label'] . '</label>
