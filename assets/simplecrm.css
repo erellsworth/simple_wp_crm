@@ -1,3 +1,27 @@
+.simple_crm_form{
+  width: 98%;
+  padding: 1%;
+  background: rgba(255,255,255,0.50);
+  margin:1vw auto;
+}
+
+.simple_crm_form input,
+.simple_crm_form textarea{
+  background: rgba(255,255,255,.50);
+  border-bottom: 1px solid;
+  border-top-right-radius: 0.25vw;
+  border-top-left-radius: 0.25vw;
+  padding: 0.25vw;
+}
+
+.simple_crm_form button{
+  width:98%;
+  margin: 1vw auto;
+  padding: 1%;
+  border-radius: 0.25vw;
+  cursor: pointer;
+}
+
 .simple_cms_spinner {
   width: 40px;
   height: 40px;
